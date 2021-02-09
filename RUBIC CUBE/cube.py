@@ -189,10 +189,11 @@ def shift_front() :
     rightl = right["line3"]
     bottoml = bottom["line1"]
 
-    top["line3"] =  rightl 
-    bottom["line1"] =leftl 
+    top["line3"] =  leftl 
+    bottom["line1"] = rightl 
     left["line3"] = bottoml
     right["line3"] = topl
+    print("front")
 
 def reverse_front() :
     l1 = ["","",""]
@@ -224,8 +225,8 @@ def reverse_front() :
     rightl = right["line3"]
     bottoml = bottom["line1"]
 
-    top["line3"] =   leftl 
-    bottom["line1"] =rightl
+    top["line3"] =   rightl 
+    bottom["line1"] = leftl
     left["line3"] = topl
     right["line3"] = bottoml
 
@@ -591,19 +592,20 @@ def col(bl) :
 
 import tkinter
 from tkinter import *
+from time import sleep
 
 def side_line(line, sdl):
     block1 = PanedWindow(line,bd =4, relief="raised", bg = col(sdl[0]), width="200", height = "20")
     l = Label(text=sdl[0])
-    # block1.add(l)
+    block1.add(l)
     line.add(block1)
     block2 = PanedWindow(line,bd =4, relief="raised", bg = col(sdl[1]), width="200", height = "20")
     l = Label(text=sdl[1])
-    # block2.add(l)
+    block2.add(l)
     line.add(block2)
     block3 = PanedWindow(line,bd =4, relief="raised", bg = col(sdl[2]), width="200", height = "20")
     l = Label(text=sdl[2])
-    # block3.add(l)
+    block3.add(l)
     line.add(block3)
     return line
 
@@ -941,135 +943,308 @@ def place_back_row_3() :
 
 #########################
 
+def has_edges(rows) :
+    if rows["row1"][1].find("2") != -1 :
+        return 1
+    elif rows["row2"][0].find("2") != -1 :
+        return 1
+    elif rows["row2"][2].find("2") != -1 :
+        return 1
+    elif rows["row3"][1].find("2") != -1 :
+        return 1
+    return -1
 
 def front_edges() :
-    while front_rows["row1"][2].find("2") != -1 or front_rows["row2"][0].find("2") != -1 or front_rows["row2"][2].find("2") != -1 or front_rows["row3"][2].find("2") != -1 :
-        if front_rows["row1"][2].find("2") != -1 :
+    print("front")
+    while True :
+        if  has_edges(front_rows) == -1:
+            break
+        if front_rows["row1"][1].find("2") != -1 :
             while top_rows["row3"][1].find("2") != -1 :
                 shift_top()
+                update_rows()
             shift_front()
+            update_rows()
             while top_rows["row2"][2].find("2") != -1 :
                 shift_top()
+                update_rows()
             shift_right()
+            update_rows()
         
-        if front_rows["row3"][2].find("2") != -1 :
+        if front_rows["row3"][1].find("2") != -1 :
             while top_rows["row3"][1].find("2") != -1 :
                 shift_top()
+                update_rows()
             shift_front()
+            update_rows()
             while top_rows["row2"][0].find("2") != -1 :
                 shift_top()
+                update_rows()
             shift_left()
+            update_rows()
         
         if front_rows["row2"][2].find("2") != -1 :
             while top_rows["row2"][2].find("2") != -1 :
                 shift_top()
+                update_rows()
             shift_right()
+            update_rows()
 
         if front_rows["row2"][0].find("2") != -1 :
             while top_rows["row2"][0].find("2") != -1 :
                 shift_top()
+                update_rows()
             shift_left()
+            update_rows()
 
 
-def right_edge() :
-    while right_rows["row1"][2].find("2") != -1 or right_rows["row2"][0].find("2") != -1 or right_rows["row2"][2].find("2") != -1 or right_rows["row3"][2].find("2") != -1 :
-        if right_rows["row1"][2].find("2") != -1 :
-            while top_rows["row2"][0].find("2") != -1 :
+def right_edges() :
+    print("right")
+    while  True :
+        if has_edges(right_rows) == -1:
+            break
+        if right_rows["row1"][1].find("2") != -1 :
+            while top_rows["row2"][2].find("2") != -1 :
                 shift_top()
+                update_rows()
             reverse_right()
+            update_rows()
             while top_rows["row3"][2].find("2") != -1 :
                 shift_top()
-            shift_front()
-        
+                update_rows()
+            reverse_front()
+            update_rows()
+
         if right_rows["row3"][2].find("2") != -1 :
             while top_rows["row2"][2].find("2") != -1 :
                 shift_top()
+                update_rows()
             shift_right()
-            while top_rows["row2"][0].find("2") != -1 :
+            update_rows()
+            while top_rows["row1"][2].find("2") != -1 :
                 shift_top()
+                update_rows()
             reverse_back()
+            update_rows()
         
         if right_rows["row2"][2].find("2") != -1 :
-            while top_rows["row2"][2].find("2") != -1 :
+            while top_rows["row1"][1].find("2") != -1 :
                 shift_top()
-            shift_right()
+                update_rows()
+            reverse_back()
+            update_rows()
 
         if right_rows["row2"][0].find("2") != -1 :
-        
             while top_rows["row2"][0].find("2") != -1 :
                 shift_top()
-            shift_left()
+                update_rows()
+            reverse_front()
+            update_rows()
 
 
-def left_edge() :
-    while left_rows["row1"][2].find("2") != -1 or left_rows["row2"][0].find("2") != -1 or left_rows["row2"][2].find("2") != -1 or left_rows["row3"][2].find("2") != -1 :
+def left_edges() :
+    print("left")
+    while  True:
+        if has_edges(left_rows) == -1:
+            break
         if left_rows["row1"][2].find("2") != -1 :
+            while top_rows["row2"][0].find("2") != -1 :
+                shift_top()
+                update_rows()
+            reverse_left()
+            update_rows()
             while top_rows["row3"][1].find("2") != -1 :
                 shift_top()
-            shift_right()
-            while top_rows["row2"][2].find("2") != -1 :
-                shift_top()
-            reverse_front()
+                update_rows()
+            shift_front()
+            update_rows()
         
         if left_rows["row3"][2].find("2") != -1 :
             while top_rows["row3"][1].find("2") != -1 :
                 shift_top()
-            shift_right()
-            while top_rows["row2"][0].find("2") != -1 :
+                update_rows()
+            shift_left()
+            update_rows()
+            while top_rows["row1"][1].find("2") != -1 :
                 shift_top()
-            reverse_back()
+                update_rows()
+            shift_back()
+            update_rows()
         
         if left_rows["row2"][2].find("2") != -1 :
-            while top_rows["row2"][2].find("2") != -1 :
+            while top_rows["row3"][2].find("2") != -1 :
                 shift_top()
-            shift_right()
+                update_rows()
+            shift_front()
+            update_rows()
 
         if left_rows["row2"][0].find("2") != -1 :
-    
+            while top_rows["row1"][1].find("2") != -1 :
+                shift_top()
+                update_rows()
+            shift_back()
+            update_rows()
+
+
+def back_edges() :
+  
+    while  True :
+        print("back")
+        if  has_edges(back_rows) == -1:
+            break
+        if back_rows["row1"][1].find("2") != -1 :
+            while top_rows["row1"][1].find("2") != -1 :
+                shift_top()
+                update_rows()
+            reverse_back()
+            update_rows()
             while top_rows["row2"][0].find("2") != -1 :
                 shift_top()
-            shift_left()
-
-
-def back_edge() :
-    while back_rows["row1"][2].find("2") != -1 or back_rows["row2"][0].find("2") != -1 or back_rows["row2"][2].find("2") != -1 or back_rows["row3"][2].find("2") != -1 :
-        if back_rows["row1"][2].find("2") != -1 :
-            while top_rows["row3"][1].find("2") != -1 :
-                shift_top()
-            shift_right()
-            while top_rows["row2"][2].find("2") != -1 :
-                shift_top()
-            reverse_front()
+                update_rows()
+            reverse_right()
+            update_rows()
+            print(5)
         
         if back_rows["row3"][2].find("2") != -1 :
-            while top_rows["row3"][1].find("2") != -1 :
+            while top_rows["row1"][1].find("2") != -1 :
                 shift_top()
-            shift_right()
-            while top_rows["row2"][0].find("2") != -1 :
-                shift_top()
+                update_rows()
             reverse_back()
-        
-        if back_rows["row2"][2].find("2") != -1 :
+            update_rows()
             while top_rows["row2"][2].find("2") != -1 :
                 shift_top()
-            shift_right()
-
-        if back_rows["row2"][0].find("2") != -1 :
-    
+                update_rows()
+            reverse_left()
+            update_rows()
+            print(6)
+        
+        if back_rows["row2"][2].find("2") != -1 :
             while top_rows["row2"][0].find("2") != -1 :
                 shift_top()
-            shift_left()
+                update_rows()
+            reverse_right()
+            update_rows()
+            print(7)
 
-def bottom_edge() :
-    
+        if back_rows["row2"][2].find("2") != -1 :
+            while top_rows["row2"][0].find("2") != -1 :
+                shift_top()
+                update_rows()
+            reverse_left()
+            update_rows()
+            print(8)
+
+
+def bottom_edges() :
+    while   True:
+        if has_edges(bottom_rows)  == -1:
+            break
+        if bottom_rows["row1"][1].find("2") != -1 :
+            while top_rows["row1"][1].find("2") != -1 :
+                shift_top()
+                update_rows()
+            shift_back()
+            update_rows()
+            shift_back()
+            update_rows()
+            print("1")
+        
+        if bottom_rows["row3"][1].find("2") != -1 :
+            while top_rows["row3"][1].find("2") != -1 :
+                shift_top()
+                update_rows()
+            shift_front()
+            update_rows()
+            shift_front()
+            update_rows()
+            print("2")
+
+        if bottom_rows["row2"][0].find("2") != -1 :
+            while top_rows["row2"][0].find("2") != -1 :
+                shift_top()
+                update_rows()
+            shift_left()
+            update_rows()
+            shift_left()
+            update_rows()
+            print("3")
+
+        if bottom_rows["row2"][2].find("2") != -1 :
+            while top_rows["row2"][2].find("2") != -1 :
+                shift_top()
+                update_rows()
+            shift_right()
+            update_rows()
+            shift_right()
+            update_rows()
+            print("4")
+        print("bottom")
+        sleep(1)
+
+def top_edges_in_place(rows) :
+    if rows["row1"][1].find("2") == -1 :
+          return -1
+    elif rows["row2"][0].find("2") == -1 : 
+        return -1
+    elif rows["row2"][2].find("2") == -1 :
+        return -1
+    elif rows["row3"][1].find("2") == -1 :
+        return -1
+    return 1
 
 def top_edges() : 
-    while  top_rows["row1"][1].find("2") == -1 or  top_rows["row2"][0].find("2") == -1 or top_rows["row2"][2].find("2") == -1 or top_rows["row3"][1].find("2") == -1 :
+    while True  :
         front_edges()
-
+        back_edges()
+        left_edges()
+        right_edges()
+        bottom_edges()
+        if top_edges_in_place(top_rows)  == 1 :
+            break
+        print("top_edges")
         
+def bottom_crose() :
+    while True :
+        if front_rows["row2"][2].find("2") != -1 :
+            shift_front()
+            shift_front()
+            update_rows()
 
+        if right_rows["row2"][2].find("2") != -1 :
+            shift_right()
+            shift_right()
+            update_rows()
+
+        if back_rows["row2"][2].find("2") != -1 :
+            shift_back()
+            shift_back()
+            update_rows()
+
+        if left_rows["row2"][2].find("2") != -1 :
+            shift_left()
+            shift_left()
+            update_rows()
+
+        if top_edges_in_place(bottom_rows)  == 1 :
+            break
+        shift_top()
+        update_rows()
 ########################
+shift_right()
+
+shift_front()
+shift_left()
+shift_right()
+shift_front()
+shift_back()
+shift_back()
+
+
+shift_left()
+update_rows()
+top_edges()
+bottom_crose()
+
 update_rows()
 root = Tk()
 root.geometry("600x600")
