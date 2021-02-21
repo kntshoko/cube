@@ -18,7 +18,8 @@ front_rows = {
     "row2" : ["Gr3","G3","Go3"],
     "row3" : ["Grw3","Gw3","Gow3"],
 }
-
+     
+    
 back_rows = {
     "row1" : ["Bry4--h","By4","Boy4--j"],
     "row2" : ["Br4","B4","Bo4"],
@@ -399,20 +400,12 @@ def side(sd,bl):
     side.add(line3)
     return side
 
-####################
-
-def has_edges(rows) :
-    if rows["row1"][1].find("2") != -1 :
-        return 1
-    elif rows["row2"][0].find("2") != -1 :
-        return 1
-    elif rows["row2"][2].find("2") != -1 :
-        return 1
-    elif rows["row3"][1].find("2") != -1 :
-        return 1
-    return -1
-
-
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+############################################################################################################
+#######################################################################################################
 def top_edges_in_place(rows) :
     if rows["row1"][1].find("2") == -1 :
           return -1
@@ -426,107 +419,105 @@ def top_edges_in_place(rows) :
 
 
 def out() :
-    i = 0
+    
     if bottom_rows["row1"][1] == "Wg2" and  bottom_rows["row2"][0] == "Wb2":
         reverse_left()
-        return 1
     elif bottom_rows["row1"][1] == "Wg2" and  bottom_rows["row2"][2] == "Wb2":
         shift_right()
-        return 1
     elif bottom_rows["row3"][1] == "Wg2" and  bottom_rows["row2"][0] == "Wb2":
         reverse_left()
-        return 1
     elif bottom_rows["row3"][1] == "Wg2" and  bottom_rows["row2"][2] == "Wb2":
         shift_right()
-        return 1
     elif bottom_rows["row2"][2] == "Wg2" and  bottom_rows["row1"][1] == "Wb2":
         shift_back()
-        return 1
     elif bottom_rows["row2"][2] == "Wg2" and  bottom_rows["row3"][1] == "Wb2":
         shift_front()
-        return 1
     elif bottom_rows["row2"][0] == "Wg2" and  bottom_rows["row1"][1] == "Wb2":
         shift_back()
-        return 1
     elif bottom_rows["row2"][0] == "Wg2" and  bottom_rows["row3"][1] == "Wb2":
         shift_front()
-        return 1
     elif bottom_rows["row1"][1] == "Wo2" and  bottom_rows["row2"][0] == "Wr2":
         reverse_left()
-        return 1
     elif bottom_rows["row1"][1] == "Wo2" and  bottom_rows["row2"][2] == "Wr2":
         shift_right()
-        return 1
     elif bottom_rows["row3"][1] == "Wo2" and  bottom_rows["row2"][0] == "Wr2":
         reverse_left()
-        return 1
     elif bottom_rows["row3"][1] == "Wo2" and  bottom_rows["row2"][2] == "Wr2":
         shift_right()
-        return 1
     elif bottom_rows["row2"][2] == "Wo2" and  bottom_rows["row1"][1] == "Wr2":
         shift_back()
-        return 1
     elif bottom_rows["row2"][2] == "Wo2" and  bottom_rows["row3"][1] == "Wr2":
         shift_front()
     elif bottom_rows["row2"][0] == "Wo2" and  bottom_rows["row1"][1] == "Wr2":
         shift_back()
-        return 1
     elif bottom_rows["row2"][0] == "Wo2" and  bottom_rows["row3"][1] == "Wr2":
         shift_front()
-        return 1
     elif bottom_rows["row1"][1] == "Wg2" and  bottom_rows["row2"][0] == "Wr2":
         reverse_left()
-        return 1
     elif bottom_rows["row1"][1] == "Wg2" and  bottom_rows["row2"][2] == "Wo2":
         shift_right()
     elif bottom_rows["row3"][1] == "Wg2" and  bottom_rows["row2"][0] == "Wo2":
         reverse_left()
-        return 1
     elif bottom_rows["row3"][1] == "Wg2" and  bottom_rows["row2"][2] == "Wr2":
         shift_right()
     elif bottom_rows["row2"][2] == "Wg2" and  bottom_rows["row1"][1] == "Wr2":
         shift_back()
-        return 1
     elif bottom_rows["row2"][2] == "Wg2" and  bottom_rows["row3"][1] == "Wo2":
         shift_front()
-        return 1
     elif bottom_rows["row2"][0] == "Wg2" and  bottom_rows["row1"][1] == "Wo2":
         shift_back()
-        return 1
     elif bottom_rows["row2"][0] == "Wg2" and  bottom_rows["row3"][1] == "Wr2":
         shift_front()
-        return 1
     elif bottom_rows["row1"][1] == "Wb2" and  bottom_rows["row2"][2] == "Wr2":
         reverse_left()
-        return 1
     elif bottom_rows["row1"][1] == "Wb2" and  bottom_rows["row2"][0] == "Wo2":
         shift_right()
-        return 1
     elif bottom_rows["row3"][1] == "Wb2" and  bottom_rows["row2"][2] == "Wo2":
         reverse_left()
-        return 1
     elif bottom_rows["row3"][1] == "Wb2" and  bottom_rows["row2"][0] == "Wr2":
         shift_right()
     elif bottom_rows["row2"][2] == "Wb2" and  bottom_rows["row3"][1] == "Wr2":
         shift_back()
-        return 1
     elif bottom_rows["row2"][2] == "Wb2" and  bottom_rows["row1"][1] == "Wo2":
         shift_front()
-        return 1
     elif bottom_rows["row2"][0] == "Wb2" and  bottom_rows["row3"][1] == "Wo2":
         shift_back()
-        return 1
     elif bottom_rows["row2"][0] == "Wb2" and  bottom_rows["row1"][1] == "Wr2":
         shift_front()
-        return 1
-    return -1
+##########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+
 def bottom_crose() :
     i = 0
-    
-    while top_edges_in_place(bottom_rows) == 1:
+    c = 0
+    while i < 100: # top_edges_in_place(bottom_rows) != 1:
+        out()
+        if back_rows["row1"][1].find("2") != -1 :
+                
+            while bottom_rows["row1"][1].find("2") != -1 :
+                reverse_bottom()
+            shift_back()
+        
+        elif back_rows["row3"][1].find("2") != -1 :
+            while bottom_rows["row1"][1].find("2") != -1 :
+                reverse_bottom()
+            shift_back()
+        
+        elif front_rows["row1"][1].find("2") != -1 :
+            while bottom_rows["row1"][1].find("2") != -1 :
+                reverse_bottom()
+            shift_front()
+        
+        elif front_rows["row3"][1].find("2") != -1 :
+            while bottom_rows["row1"][1].find("2") != -1 :
+                reverse_bottom()
+            shift_front() 
 
-
-        if top_rows["row3"][1].find("2") != -1 :
+        elif top_rows["row3"][1].find("2") != -1 :
             while bottom_rows["row3"][1].find("2") != -1 :
                 reverse_bottom()
             shift_front()
@@ -560,127 +551,86 @@ def bottom_crose() :
             while bottom_rows["row2"][2].find("2") != -1 :
                 reverse_bottom()
             shift_right()
-            
+    
         elif right_rows["row1"][1].find("2") != -1 :
             while bottom_rows["row2"][2].find("2") != -1 :
                 reverse_bottom()
-            shift_right() 
+            shift_right()
+        
+        
         
         #################################################
-
+        
         if front_rows["row2"][0].find("2") != -1 :
             while bottom_rows["row2"][0].find("2") != -1 :
                 reverse_bottom()
             if front_rows["row2"][0] == "Wg2" and bottom_rows["row3"][1] != "Wb2" and bottom_rows["row3"][1] != "Wr2" and bottom_rows["row1"][1] != "Wb2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][2] != "Wr2" :
-                        shift_left()
+                shift_left()
             
             elif front_rows["row2"][0] == "Wb2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wr2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][2] != "Wr2":
-                        shift_left()
-
+                shift_left()
             elif front_rows["row2"][0] == "Wo2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row3"][1] != "Wr2" and bottom_rows["row1"][1] != "Wb2" and bottom_rows["row1"][1] != "Wr2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][2] != "Wb2":
-                        shift_left()
-            
+                shift_left()
             elif front_rows["row2"][0] == "Wr2" and bottom_rows["row3"][1] != "Wb2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][2] != "Wb2":
-                        shift_left()
-
-
-            elif out() == 1 :
-                pass
-            
+                shift_left()
             else :
                 reverse_bottom()
-            
-        if front_rows["row2"][2].find("2") != -1 :
+
+        elif front_rows["row2"][2].find("2") != -1 :
             while bottom_rows["row2"][2].find("2") != -1 :
                 reverse_bottom()
             if front_rows["row2"][2] == "Wg2" and bottom_rows["row1"][1] != "Wb2" and bottom_rows["row1"][1] != "Wr2" and bottom_rows["row3"][1] != "Wb2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][0] != "Wr2":
-                        reverse_right()
-            
+                reverse_right()
             elif front_rows["row2"][2] == "Wb2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row2"][1] != "Wg2" and bottom_rows["row2"][1] != "Wr2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][0] != "Wr2":
-                        reverse_right()
-
+                reverse_right()
             elif front_rows["row2"][2] == "Wo2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wr2" and bottom_rows["row2"][1] != "Wb2" and bottom_rows["row2"][1] != "Wr2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wb2":
-                        reverse_right()
-            
+                reverse_right()
             elif front_rows["row2"][2] == "Wr2" and bottom_rows["row1"][1] != "Wb2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row2"][1] != "Wg2" and bottom_rows["row2"][1] != "Wo2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wb2":
-                        reverse_right()
-            
-
-            elif out() == 1 :
-                pass
-
+                reverse_right()
             else :
                 reverse_bottom()
-            
 
-        if back_rows["row2"][0].find("2") != -1 :
+        elif back_rows["row2"][0].find("2") != -1 :
             while bottom_rows["row2"][0].find("2") != -1 :
                 reverse_bottom()
             if back_rows["row2"][0] == "Wg2" and bottom_rows["row1"][1] != "Wb2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row3"][1] != "Wb2" and bottom_rows["row3"][1] != "Wr2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][2] != "Wr2" :
-                        reverse_left()
-
+                reverse_left()
             elif back_rows["row2"][0] == "Wb2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wr2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][2] != "Wr2" :
-                        reverse_left()
-            
+                reverse_left()
             elif back_rows["row2"][0] == "Wo2" and bottom_rows["row1"][1] != "Wr2" and bottom_rows["row1"][1] != "Wb2" and bottom_rows["row3"][1] != "Wr2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][2] != "Wb2" :
-                        reverse_left()
-            
+                reverse_left()
             elif back_rows["row2"][0] == "Wr2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row3"][1] != "Wb2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][2] != "Wb2" :
-                        reverse_left()
-            
-
-            elif out() == 1 :
-                pass
-
-
+                reverse_left()
             else :
                 reverse_bottom()
-            
-        if back_rows["row2"][2].find("2") != -1 :
+
+        elif back_rows["row2"][2].find("2") != -1 :
             while bottom_rows["row2"][2].find("2") != -1 :
                 reverse_bottom()
+            
             if back_rows["row2"][2] == "Wg2" and bottom_rows["row3"][1] != "Wb2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row1"][1] != "Wb2" and bottom_rows["row1"][1] != "Wr2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][0] != "Wr2":
-                       
-                        shift_right()
-
+                shift_right()
             elif back_rows["row2"][2] == "Wb2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row3"][1] != "Wr2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][0] != "Wr2":
-                        shift_right()
-            
+                shift_right()
             elif back_rows["row2"][2] == "Wo2" and bottom_rows["row3"][1] != "Wr2" and bottom_rows["row3"][1] != "Wb2" and bottom_rows["row1"][1] != "Wr2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wb2":
-                        shift_right()
-            
+                shift_right()
             elif back_rows["row2"][2] == "Wr2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row1"][1] != "Wb2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wb2":
-                        shift_right()
-            
-
-            elif out() == 1 :
-                pass
-
-
-
+                shift_right()
             else :
                 reverse_bottom()
-        
+
         elif left_rows["row2"][0].find("2") != -1 :
             while bottom_rows["row1"][1].find("2") != -1 :
                 reverse_bottom()
             if left_rows["row2"][0] == "Wg2" and bottom_rows["row2"][0] != "Wb2" and bottom_rows["row2"][0] != "Wr2" and bottom_rows["row2"][2] != "Wb2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row3"][1] != "Wr2":
-                        shift_back()
-
-            elif left_rows["row2"][0] == "Wb2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][2] != "Wg2" and bobottom_rowsttom["row2"][2] != "Wr2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row3"][1] != "Wr2":
-                        shift_back()
-
+                shift_back()
+            elif left_rows["row2"][0] == "Wb2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][2] != "Wr2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row3"][1] != "Wr2":
+                shift_back()
             elif left_rows["row2"][0] == "Wo2" and bottom_rows["row2"][0] != "Wr2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][2] != "Wr2" and bottom_rows["row2"][2] != "Wb2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row3"][1] != "Wb2":
-                        shift_back()
-            
+                shift_back()
             elif left_rows["row2"][0] == "Wr2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][0] != "Wb2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row3"][1] != "Wb2":
-                        shift_back()
-            
-
-            elif out() == 1 :
-                pass
-
-
+                shift_back()
+           
             else :
                 reverse_bottom()
 
@@ -688,77 +638,48 @@ def bottom_crose() :
             while bottom_rows["row3"][1].find("2") != -1 :
                 reverse_bottom()
             if left_rows["row2"][2] == "Wg2" and bottom_rows["row2"][2] != "Wb2" and bottom_rows["row2"][2] != "Wr2" and bottom_rows["row2"][0] != "Wb2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row1"][1] != "Wr2":
-                        reverse_front()
-
+                reverse_front()
             elif left_rows["row2"][2] == "Wb2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wr2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row1"][1] != "Wr2":
-                        reverse_front()
-
+                reverse_front()
             elif left_rows["row2"][2] == "Wo2" and bottom_rows["row2"][2] != "Wr2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][0] != "Wr2" and bottom_rows["row2"][0] != "Wb2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wb2":
                         reverse_front()
-            
             elif left_rows["row2"][2] == "Wr2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][2] != "Wb2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wb2":
                         reverse_front()
-            
-
             elif out() == 1 :
-                pass
-
-
+                c + 1
             else :
                 reverse_bottom()
-        
+
         elif right_rows["row2"][0].find("2") != -1 :
             while bottom_rows["row3"][1].find("2") != -1 :
                 reverse_bottom()
             if right_rows["row2"][0] == "Wg2" and bottom_rows["row2"][0] != "Wb2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][2] != "Wb2" and bottom_rows["row2"][2] != "Wr2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row1"][1] != "Wr2" :
                         shift_front()
-            
             elif right_rows["row2"][0] == "Wb2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wr2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row1"][1] != "Wo2" and bottom_rows["row1"][1] != "Wr2" :
                         shift_front()
-            
             elif right_rows["row2"][0] == "Wo2" and bottom_rows["row2"][0] != "Wr2" and bottom_rows["row2"][0] != "Wb2" and bottom_rows["row2"][2] != "Wr2" and bottom_rows["row2"][2] != "Wg2"  and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wb2" :
                         shift_front()
-
             elif right_rows["row2"][0] == "Wr2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][2] != "Wb2" and bottom_rows["row1"][1] != "Wg2" and bottom_rows["row1"][1] != "Wb2" :
                         shift_front()
-            
-
-
             elif out() == 1 :
-                pass
-
-
-
-
+                c + 1
             else :
                 reverse_bottom()
-            
+   
         elif right_rows["row2"][2].find("2") != -1 :
             while bottom_rows["row1"][1].find("2") != -1 :
                 reverse_bottom()
             if right_rows["row2"][2] == "Wg2" and bottom_rows["row2"][2] != "Wb2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][0] != "Wb2" and bottom_rows["row2"][0] != "Wr2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row3"][1] != "Wr2" :
-                        reverse_back()
+                reverse_back()
             
             elif right_rows["row2"][2] == "Wb2" and bottom_rows["row2"][2] != "Wg2" and bottom_rows["row2"][2] != "Wr2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row3"][1] != "Wo2" and bottom_rows["row3"][1] != "Wr2" :
-                        reverse_back()
-            
+                reverse_back()
             elif right_rows["row2"][2] == "Wo2" and bottom_rows["row2"][2] != "Wr2" and bottom_rows["row2"][2] != "Wb2" and bottom_rows["row2"][0] != "Wr2" and bottom_rows["row2"][0] != "Wg2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row3"][1] != "Wb2" :
-                        reverse_back()
-
+                reverse_back()
             elif right_rows["row2"][2] == "Wr2" and bottom_rows["row2"][2] != "Wo2" and bottom_rows["row2"][2] != "Wg2"  and bottom_rows["row2"][0] != "Wo2" and bottom_rows["row2"][0] != "Wb2" and bottom_rows["row3"][1] != "Wg2" and bottom_rows["row3"][1] != "Wb2" :
-                        reverse_back()
-
-            
-
-            elif out() == 1 :
-                pass
-
-            
-
-
+                reverse_back()
             else :
                 reverse_bottom()
-          
         i += 1
         
     if bottom_rows["row2"][0] == "Wg2":
@@ -768,6 +689,16 @@ def bottom_crose() :
     elif bottom_rows["row1"][1] == "Wg2":
         reverse_bottom()
         reverse_bottom()
+
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+
+
+
+
+
 def has_conner() :
     if right_rows["row1"][0].find("2") != -1 :
         return 11
@@ -807,95 +738,117 @@ def has_lower_conners() :
         return 1
     return -1
 ########################
+def bot() :
+    i = 0
+    if bottom_rows["row1"][0] == "Wbr2":
+        i += 1
+    if bottom_rows["row1"][1] == "Wb2" :
+        i += 1
+    if bottom_rows["row1"][2] == "Wob2":
+        i += 1
+    
+    if bottom_rows["row2"][0] == "Wr2":
+        i += 1
+    if bottom_rows["row2"][1] == "W2" :
+        i += 1
+    if bottom_rows["row2"][2] == "Wo2":
+        i += 1
+    
+    if bottom_rows["row3"][0] == "Wrg2" :
+        i += 1
+    if bottom_rows["row3"][1] == "Wg2" :
+        i += 1
+    if bottom_rows["row3"][2] == "Wgo2" :
+        i += 1
+    
 
+    return i
 ########################
 def lay_3() :
     i = 0
     while has_lower_conners() == 1:
         t  = 0
-        while  has_conner() != -1 :
+        while has_conner() != -1 :
 
             
             
             if back_rows["row1"][0].find("5") != -1  and left_rows["row1"][0].find("2") != -1:
                 reverse_top()
-                print("#1")
             elif right_rows["row1"][2].find("5") != -1  and back_rows["row1"][2].find("2") != -1:
                 shift_top()
                 shift_top()
-                print("#2")
             elif front_rows["row1"][0].find("5") != -1  and right_rows["row1"][0].find("2") != -1:
                 shift_top()
-                print("#3")
+      
             elif left_rows["row1"][2].find("4") != -1  and front_rows["row1"][0].find("2") != -1:
                 shift_top()
             elif right_rows["row1"][2].find("4") != -1  and back_rows["row1"][2].find("2") != -1:
                 reverse_top()
-                print("#4")
+          
             elif front_rows["row1"][2].find("4") != -1  and right_rows["row1"][2].find("2") != -1:
                 shift_top()
                 shift_top()
-                print("#5")
+         
             elif right_rows["row1"][0].find("4") != -1  and front_rows["row1"][2].find("2") != -1:
                 reverse_top()
-                print("#6")
+          
             elif front_rows["row1"][0].find("4") != -1  and left_rows["row1"][2].find("2") != -1:
                 shift_top()
                 shift_top()
-                print("#7")
+               
             elif left_rows["row1"][0].find("4") != -1  and back_rows["row1"][2].find("2") != -1:
                 shift_top()
-                print("#8")
+            
             elif right_rows["row1"][2].find("3") != -1  and back_rows["row1"][2].find("2") != -1:
                 shift_top()
-                print("#9")
+               
             elif back_rows["row1"][0].find("3") != -1  and left_rows["row1"][0].find("2") != -1:
                 reverse_top()
                 reverse_top()
-                print("#10")
+            
             elif left_rows["row1"][2].find("3") != -1  and front_rows["row1"][0].find("2") != -1:
                 reverse_top()
-                print("#11")
+            
             elif right_rows["row1"][0].find("3") != -1  and front_rows["row1"][2].find("2") != -1:
                 shift_top()
-                print("12#")
+               
             elif back_rows["row1"][2].find("3") != -1  and right_rows["row1"][2].find("2") != -1:
                 reverse_top()
                 reverse_top()
-                print("#13")
+                
             elif left_rows["row1"][0].find("3") != -1  and back_rows["row1"][0].find("2") != -1:
                 reverse_top()
-                print("#14")
+                
             elif back_rows["row1"][0].find("Oqw6") != -1  and left_rows["row1"][0].find("2") != -1:
                 shift_top()
-                print("#15")
+                
             elif left_rows["row1"][2].find("6") != -1  and front_rows["row1"][0].find("2") != -1:
                 shift_top()
                 shift_top()
-                print("#16")
+                
             elif front_rows["row1"][2].find("6") != -1  and right_rows["row1"][0].find("2") != -1:
                 reverse_top()
-                print("#17")
+                
             elif back_rows["row1"][2].find("6") != -1  and right_rows["row1"][2].find("2") != -1:
                 shift_top()
-                print("#18")
+               
             elif left_rows["row1"][0].find("6") != -1  and back_rows["row1"][0].find("2") != -1:
                 shift_top()
                 shift_top()
-                print("#19")
+               
             elif front_rows["row1"][0].find("6") != -1  and left_rows["row1"][2].find("2") != -1:
                 reverse_top()
-                print("#20")
+               
             elif front_rows["row1"][0].find("5") != -1  and left_rows["row1"][2].find("2") != -1:
                 shift_top()
-                print("#21")
+             
             elif right_rows["row1"][0].find("5") != -1  and front_rows["row1"][2].find("2") != -1:
                 shift_top()
                 shift_top()
-                print("#22")
+           
             elif back_rows["row1"][2].find("5") != -1  and right_rows["row1"][2].find("2") != -1:
                 reverse_top()
-                print("#23")
+                
             
             if left_rows["row1"][2].find("5") != -1  and front_rows["row1"][0].find("2") != -1:
                 shift_front()
@@ -915,7 +868,6 @@ def lay_3() :
             elif right_rows["row1"][2].find("6") != -1  and back_rows["row1"][2].find("2") != -1:
                 shift_back()
                 shift_top()
-                shift_top()
                 reverse_back()
             
             elif front_rows["row1"][2].find("3") != -1  and right_rows["row1"][0].find("2") != -1:
@@ -932,117 +884,92 @@ def lay_3() :
                 reverse_right()
                 reverse_top()
                 shift_right()
-                
 
             elif back_rows["row1"][0].find("4") != -1  and left_rows["row1"][0].find("2") != -1:
-                reverse_left()
+                shift_left()
                 shift_top()
                 reverse_left()
-            # else :
-            #     shift_top()
+            else :
+                shift_top()
             
             t += 1
 
-        if top_rows["row3"][0].find("2") != -1:
+        if top_edges_in_place(top_rows) != 1:
+            if top_rows["row3"][0].find("2") != -1:
+                shift_front()
+                shift_top()
+                shift_top()
+                reverse_front()
+            elif top_rows["row3"][2].find("2") != -1:
+                reverse_front()
+                shift_top()
+                shift_top()
+                shift_front()
+            elif top_rows["row1"][0].find("2") != -1:
+                reverse_back()
+                shift_top()
+                shift_top()
+                shift_back()
+            elif top_rows["row1"][2].find("2") != -1:
+                reverse_right()
+                shift_top()
+                shift_top()
+                shift_right()
+        if left_rows["row3"][0].find("2") != -1:
+            shift_left()
+            shift_top()
+            shift_top()
+            reverse_left()
+        elif left_rows["row3"][2].find("2") != -1:
             shift_front()
             shift_top()
             shift_top()
             reverse_front()
-            print("*1")
-        elif top_rows["row3"][2].find("2") != -1:
-            reverse_front()
-            shift_top()
-            shift_top()
-            shift_front()
-            print("*2")
-        elif top_rows["row1"][0].find("2") != -1:
-            reverse_back()
-            shift_top()
-            shift_top()
-            shift_back()
-            print("*3")
-        elif top_rows["row1"][2].find("2") != -1:
-            shift_back()
-            shift_top()
-            shift_top()
-            reverse_back()
-            print("*4")
         elif right_rows["row3"][2].find("2") != -1:
             reverse_right()
             shift_top()
             shift_top()
             shift_right()
-            print("*5")
         elif right_rows["row3"][0].find("2") != -1:
             shift_right()
             shift_top()
             shift_top()
             reverse_right()
-            print("*6")
-        elif left_rows["row3"][2].find("2") != -1:
-            reverse_left()
+        elif back_rows["row3"][0].find("2") != -1:
+            shift_back()
             shift_top()
             shift_top()
-            shift_left()
-            print("*7")
-        elif left_rows["row3"][0].find("2") != -1:
-            shift_left()
-            shift_top()
-            shift_top()
-            reverse_left()
-            print("*8")
-        elif front_rows["row3"][0].find("2") != -1:
-            shift_front()
-            shift_top()
-            shift_top()
-            reverse_front()
-            print("*9")
-        elif front_rows["row3"][2].find("2") != -1:
-            reverse_front()
-            shift_top()
-            shift_top()
-            shift_front()
-            print("*10")
+            reverse_back()
         elif back_rows["row3"][2].find("2") != -1:
             shift_back()
             shift_top()
             shift_top()
             reverse_back()
-            print("*11")
-        elif back_rows["row3"][0].find("2") != -1:
-            reverse_back()
+        elif front_rows["row3"][0].find("2") != -1:
+            shift_front()
             shift_top()
             shift_top()
-            shift_back()
-            print("*13")
-        elif back_rows["row2"][0].find("4") == -1:
-            reverse_back()
+            reverse_front()
+        elif front_rows["row3"][2].find("2") != -1:
+            shift_front()
             shift_top()
             shift_top()
-            shift_back()
-            print("*14")
-        # elif back_rows["row2"][2].find("4") == -1:
-        #     reverse_right()
-        #     shift_top()
-        #     shift_top()
-        #     shift_right()
-        #     print("*15")
-        elif front_rows["row2"][0].find("3") == -1:
-            shift_left()
-            shift_top()
-            shift_top()
-            reverse_left()
-            print("*16")
-        # elif front_rows["row2"][2].find("3") == -1:
-        #     shift_right()
-        #     shift_top()
-        #     shift_top()
-        #     reverse_right()
-        #     print("*17")
+            reverse_front()
+        
 
         i += 1
 
-##########################
+
+
+
+
+
+
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+
 
 def has_midlle_edges() :
     if right_rows["row2"][0].find("6") == -1 :
@@ -1092,7 +1019,7 @@ def lay_2() :
                 shift_front()
                 
             
-            if right_rows["row1"][1].find("4") != -1 and top_rows["row2"][2].find("5") != -1 :
+            elif right_rows["row1"][1].find("4") != -1 and top_rows["row2"][2].find("5") != -1 :
                 shift_left()
                 shift_top()
                 reverse_left()
@@ -1102,7 +1029,7 @@ def lay_2() :
                 shift_back()
              
 
-            if left_rows["row1"][1].find("4") != -1 and top_rows["row2"][0].find("6") != -1 :
+            elif left_rows["row1"][1].find("4") != -1 and top_rows["row2"][0].find("6") != -1 :
                 reverse_right()
                 reverse_top()
                 shift_right()
@@ -1112,7 +1039,7 @@ def lay_2() :
                 reverse_back()
                 
             
-            if back_rows["row1"][1].find("6") != -1 and top_rows["row1"][1].find("3") != -1 :
+            elif back_rows["row1"][1].find("6") != -1 and top_rows["row1"][1].find("3") != -1 :
                 reverse_front()
                 reverse_top()
                 shift_front()
@@ -1122,7 +1049,7 @@ def lay_2() :
                 reverse_right()
                 
 
-            if front_rows["row1"][1].find("6") != -1 and top_rows["row3"][1].find("4") != -1 :
+            elif front_rows["row1"][1].find("6") != -1 and top_rows["row3"][1].find("4") != -1 :
                 shift_back()
                 shift_top()
                 reverse_back()
@@ -1132,7 +1059,7 @@ def lay_2() :
                 shift_right()
                 
             
-            if back_rows["row1"][1].find("5") != -1 and top_rows["row1"][1].find("3") != -1 :
+            elif back_rows["row1"][1].find("5") != -1 and top_rows["row1"][1].find("3") != -1 :
                 shift_front()
                 shift_top()
                 reverse_front()
@@ -1142,7 +1069,7 @@ def lay_2() :
                 shift_left()
                 
 
-            if front_rows["row1"][1].find("5") != -1 and top_rows["row3"][1].find("4") != -1 :
+            elif front_rows["row1"][1].find("5") != -1 and top_rows["row3"][1].find("4") != -1 :
                 reverse_back()
                 reverse_top()
                 shift_back()
@@ -1151,7 +1078,7 @@ def lay_2() :
                 shift_top()
                 reverse_left()
             
-            if right_rows["row1"][1].find("3") != -1 and top_rows["row2"][2].find("5") != -1 :
+            elif right_rows["row1"][1].find("3") != -1 and top_rows["row2"][2].find("5") != -1 :
                 reverse_left()
                 reverse_top()
                 shift_left()
@@ -1250,57 +1177,71 @@ def lay_2() :
             shift_top()
             shift_top()
             shift_front()
-            print("@1")
            
         elif right_rows["row2"][2].find("6") == -1 :
             shift_back()
             shift_top()
             shift_top()
             reverse_back()
-            print("@2")
             
         elif back_rows["row2"][0].find("4") == -1 :
             shift_left()
             shift_top()
             shift_top()
             reverse_left()
-            print("@3")
 
         elif back_rows["row2"][2].find("4") == -1 :
             reverse_right()
             shift_top()
             shift_top()
             shift_right()
-            print("@4") 
+
         elif front_rows["row2"][0].find("3") == -1 :
             reverse_left()
             shift_top()
             shift_top()
             shift_left()
-            print("@5")
+
         elif front_rows["row2"][2].find("3") == -1 :
             shift_right()
             shift_top()
             shift_top()
             reverse_right()
-            print("@6")
            
         elif left_rows["row2"][0].find("5") == -1 :
             reverse_back()
             shift_top()
             shift_back()
-            print("@7")
             
         elif left_rows["row2"][2].find("5") == -1 :
             shift_front()
             shift_top()
             shift_top()
             reverse_front()
-            print("@8")
             
         lay_3()
         c +=1
-##########################
+
+
+
+
+
+
+
+
+
+
+
+
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+
+
+
 def has_top_x() :
     if top_rows["row1"][1].find("1") == -1:
         return 1
@@ -1351,7 +1292,7 @@ def top_x() :
                 reverse_right()
                 reverse_top()
                 reverse_front()
-        if top_who() == 2 :
+        elif top_who() == 2 :
             shift_top()
             shift_front()
             shift_right()
@@ -1396,7 +1337,15 @@ def top_x() :
             shift_top()
         i += 1
 
-############################
+
+
+
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+
+
 def has_little_fish() :
     i = 0
     if front_rows["row1"][1] == "Gy3"  :
@@ -1423,7 +1372,7 @@ def do_fish() :
             shift_top()
             reverse_right()
 
-        if top_rows["row1"][1] == "Yg1" and top_rows["row3"][1] == "Yb1" and top_rows["row2"][0] != "Yr1"  :
+        elif top_rows["row1"][1] == "Yg1" and top_rows["row3"][1] == "Yb1" and top_rows["row2"][0] != "Yr1"  :
             shift_top()
             shift_top()
             shift_right()
@@ -1435,7 +1384,7 @@ def do_fish() :
             shift_top()
             reverse_right()
 
-        if top_rows["row2"][0] == "Yb1" and top_rows["row2"][2] == "Yg1" and top_rows["row1"][1] != "Yo1"  :
+        elif top_rows["row2"][0] == "Yb1" and top_rows["row2"][2] == "Yg1" and top_rows["row1"][1] != "Yo1"  :
             reverse_top()
             shift_right()
             shift_top()
@@ -1446,7 +1395,7 @@ def do_fish() :
             shift_top()
             reverse_right()
 
-        if top_rows["row2"][0] == "Yg1" and top_rows["row2"][2] == "Yb1" and top_rows["row3"][1] != "Yo1"  :
+        elif top_rows["row2"][0] == "Yg1" and top_rows["row2"][2] == "Yb1" and top_rows["row3"][1] != "Yo1"  :
             shift_top()
             shift_right()
             shift_top()
@@ -1457,7 +1406,7 @@ def do_fish() :
             shift_top()
             reverse_right()
 
-        if top_rows["row1"][1] == "Yr1" and top_rows["row3"][1] == "Yo1" and top_rows["row2"][0] != "Yg1"  :
+        elif top_rows["row1"][1] == "Yr1" and top_rows["row3"][1] == "Yo1" and top_rows["row2"][0] != "Yg1"  :
             shift_top()
             shift_top()
             shift_front()
@@ -1469,7 +1418,7 @@ def do_fish() :
             shift_top()
             reverse_front()
 
-        if top_rows["row1"][1] == "Yo1" and top_rows["row3"][1] == "Yr1" and top_rows["row2"][2] != "Yg1" :
+        elif top_rows["row1"][1] == "Yo1" and top_rows["row3"][1] == "Yr1" and top_rows["row2"][2] != "Yg1" :
             reverse_top() 
             shift_top()
             shift_front()
@@ -1481,7 +1430,7 @@ def do_fish() :
             shift_top()
             reverse_front()
 
-        if top_rows["row2"][0] == "Yr1" and top_rows["row2"][2] == "Yo1" and top_rows["row3"][1] != "Yg1" :
+        elif top_rows["row2"][0] == "Yr1" and top_rows["row2"][2] == "Yo1" and top_rows["row3"][1] != "Yg1" :
             shift_top()
             shift_front()
             shift_top()
@@ -1492,7 +1441,7 @@ def do_fish() :
             shift_top()
             reverse_front()
 
-        if top_rows["row2"][1] == "Yo1" and top_rows["row3"][2] == "Yr1" and top_rows["row2"][2] != "Yg1" :
+        elif top_rows["row2"][1] == "Yo1" and top_rows["row3"][2] == "Yr1" and top_rows["row2"][2] != "Yg1" :
             shift_top()
             shift_top()
             shift_top()
@@ -1505,7 +1454,7 @@ def do_fish() :
             shift_top()
             reverse_front() 
 
-        if top_rows["row1"][1] == "Yr1" and top_rows["row2"][0] == "Yg1" and top_rows["row3"][1] != "Yo1" :
+        elif top_rows["row1"][1] == "Yr1" and top_rows["row2"][0] == "Yg1" and top_rows["row3"][1] != "Yo1" :
             reverse_top()
             shift_top()
             shift_left()
@@ -1518,7 +1467,7 @@ def do_fish() :
             reverse_left()
             shift_top()
 
-        if top_rows["row2"][0] == "Yr1" and top_rows["row3"][1] == "Yg1" and top_rows["row2"][2] != "Yo1"  :
+        elif top_rows["row2"][0] == "Yr1" and top_rows["row3"][1] == "Yg1" and top_rows["row2"][2] != "Yo1"  :
             shift_top()
             shift_top()
             shift_left()
@@ -1530,7 +1479,7 @@ def do_fish() :
             shift_top()
             reverse_left()
 
-        if top_rows["row2"][2] == "Yg1" and top_rows["row3"][1] == "Yr1" and top_rows["row1"][1] != "Yo1" :
+        elif top_rows["row2"][2] == "Yg1" and top_rows["row3"][1] == "Yr1" and top_rows["row1"][1] != "Yo1" :
             shift_top()
             shift_top()
             shift_left()
@@ -1542,7 +1491,7 @@ def do_fish() :
             shift_top()
             reverse_left()
 
-        if top_rows["row2"][2] == "Yr1" and top_rows["row1"][1] == "Yg1" and top_rows["row2"][0] != "Yo1" :
+        elif top_rows["row2"][2] == "Yr1" and top_rows["row1"][1] == "Yg1" and top_rows["row2"][0] != "Yo1" :
             shift_top()
             shift_top()
             shift_left()
@@ -1554,7 +1503,7 @@ def do_fish() :
             shift_top()
             reverse_left()
         
-        if top_rows["row1"][1] == "Yo1" and top_rows["row2"][0] == "Yb1" and top_rows["row2"][2] != "Yg1" :
+        elif top_rows["row1"][1] == "Yo1" and top_rows["row2"][0] == "Yb1" and top_rows["row2"][2] != "Yg1" :
             reverse_top()
             shift_right()
             shift_top()
@@ -1565,7 +1514,7 @@ def do_fish() :
             shift_top()
             reverse_right()
 
-        if top_rows["row2"][0] == "Yo1" and top_rows["row3"][1] == "Yb1" and top_rows["row1"][1] != "Yg1"  : 
+        elif top_rows["row2"][0] == "Yo1" and top_rows["row3"][1] == "Yb1" and top_rows["row1"][1] != "Yg1"  : 
             shift_top()
             shift_top()
             shift_right()
@@ -1577,7 +1526,7 @@ def do_fish() :
             shift_top()
             reverse_right()
 
-        if top_rows["row2"][2] == "Yb1" and top_rows["row3"][1] == "Yo1" and top_rows["row2"][0] != "Yg1"  :
+        elif top_rows["row2"][2] == "Yb1" and top_rows["row3"][1] == "Yo1" and top_rows["row2"][0] != "Yg1"  :
             shift_top()
             shift_right()
             shift_top()
@@ -1588,7 +1537,7 @@ def do_fish() :
             shift_top()
             reverse_right()
 
-        if top_rows["row2"][2] == "Yo1" and top_rows["row1"][1] == "Yb1" and top_rows["row3"][1] != "Yg1"   :
+        elif top_rows["row2"][2] == "Yo1" and top_rows["row1"][1] == "Yb1" and top_rows["row3"][1] != "Yg1"   :
             shift_right()
             shift_top()
             reverse_right()
@@ -1598,7 +1547,7 @@ def do_fish() :
             shift_top()
             reverse_right()
 
-        if top_rows["row1"][1] == "Yo1" and top_rows["row2"][0] != "Yb1" and top_rows["row2"][2] == "Yg1" :
+        elif top_rows["row1"][1] == "Yo1" and top_rows["row2"][0] != "Yb1" and top_rows["row2"][2] == "Yg1" :
             shift_top()
             shift_front()
             shift_top()
@@ -1609,7 +1558,7 @@ def do_fish() :
             shift_top()
             reverse_front()
 
-        if top_rows["row2"][0] == "Yo1" and top_rows["row3"][1] != "Yb1" and top_rows["row1"][1] == "Yg1"  : 
+        elif top_rows["row2"][0] == "Yo1" and top_rows["row3"][1] != "Yb1" and top_rows["row1"][1] == "Yg1"  : 
             shift_top()
             shift_top()
             shift_front()
@@ -1621,7 +1570,7 @@ def do_fish() :
             shift_top()
             reverse_front()
 
-        if top_rows["row2"][2] != "Yb1" and top_rows["row3"][1] == "Yo1" and top_rows["row2"][0] == "Yg1"  :
+        elif top_rows["row2"][2] != "Yb1" and top_rows["row3"][1] == "Yo1" and top_rows["row2"][0] == "Yg1"  :
             shift_top()
             shift_front()
             shift_top()
@@ -1632,7 +1581,7 @@ def do_fish() :
             shift_top()
             reverse_front()
 
-        if top_rows["row2"][2] == "Yo1" and top_rows["row1"][1] != "Yb1" and top_rows["row3"][1] == "Yg1"   :
+        elif top_rows["row2"][2] == "Yo1" and top_rows["row1"][1] != "Yb1" and top_rows["row3"][1] == "Yg1"   :
             shift_front()
             shift_top()
             reverse_front()
@@ -1642,7 +1591,7 @@ def do_fish() :
             shift_top()
             reverse_front()
         
-        if top_rows["row1"][1] == "Yb1" and top_rows["row3"][1] == "Yg1" and top_rows["row2"][2] == "Yo1" : 
+        elif top_rows["row1"][1] == "Yb1" and top_rows["row3"][1] == "Yg1" and top_rows["row2"][2] == "Yo1" : 
             break
         elif top_rows["row1"][1] == "Yg1" and top_rows["row3"][1] == "Yb1" and top_rows["row2"][0] == "Yo1"  : 
             shift_top()
@@ -1664,8 +1613,13 @@ def do_fish() :
             reverse_right()
         i += 1         
 
-############################
 
+
+
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
 
 def second_last():
     i = 0
@@ -1735,9 +1689,16 @@ def do_second_last():
                 reverse_top()
                 shift_left()
         i += 1
-       
 
-###############################
+
+
+
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+
+
 
 def last() :
     i = 0
@@ -1792,13 +1753,18 @@ def do_last() :
             break
         else :
             one_two()
-##############################
 
 
+
+
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
+###########################################################################################################
 def main(mix):
 
     
-
+    # reverse_back()
     global moves 
     mix = mix.split(" ")
 
@@ -1871,7 +1837,7 @@ def main(mix):
     moves = moves[moves.find(":") + 1:]
     i = 0
 
-    # res = moves.split(" ")
+    # # res = moves.split(" ")
 
     if top_rows["row1"][0] == "Ybr1--h" :
         i += 1
@@ -1891,31 +1857,152 @@ def main(mix):
         i += 1
     if top_rows["row3"][2] == "Ygo1--i":
         i += 1
-    if i == 9 :
+    if bottom_rows["row1"][0] == "Wbr2":
+        i += 1
+    if bottom_rows["row1"][1] == "Wb2" :
+        i += 1
+    if bottom_rows["row1"][2] == "Wob2":
+        i += 1
+    
+    if bottom_rows["row2"][0] == "Wr2":
+        i += 1
+    if bottom_rows["row2"][1] == "W2" :
+        i += 1
+    if bottom_rows["row2"][2] == "Wo2":
+        i += 1
+    
+    if bottom_rows["row3"][0] == "Wrg2" :
+        i += 1
+    if bottom_rows["row3"][1] == "Wg2" :
+        i += 1
+    if bottom_rows["row3"][2] == "Wgo2" :
+        i += 1
+    
+    if front_rows["row1"][0] ==  "Gyr3--k" :
+        i += 1 
+    if front_rows["row1"][1] ==  "Gy3" :
+        i += 1 
+    if front_rows["row1"][2] ==  "Gyo3--i":
+        i += 1 
+    if front_rows["row2"][0]== "Gr3" :
+        i += 1 
+    if front_rows["row2"][1]== "G3":
+        i += 1 
+    if front_rows["row2"][2]== "Go3":
+        i += 1 
+    if front_rows["row3"][0] == "Grw3":
+        i += 1 
+    if front_rows["row3"][1] =="Gw3" :
+        i += 1 
+    if front_rows["row3"][2] =="Gow3":
+        i += 1 
+    if back_rows["row1" ][0] == "Bry4--h" :
+        i += 1 
+    if back_rows["row1" ][1] == "By4" :
+        i += 1 
+    if back_rows["row1" ][2] == "Boy4--j":
+        i += 1 
+    if back_rows["row2" ][0] == "Br4" :
+        i += 1 
+    if back_rows["row2" ][1] == "B4" :
+        i += 1 
+    if back_rows["row2" ][2] == "Bo4":
+        i += 1 
+    if back_rows["row3" ][0]== "Brw4" :
+        i += 1 
+    if back_rows["row3" ][1]== "Bw4" :
+        i += 1 
+    if back_rows["row3" ][2]== "Bwo4":
+        i += 1
+    if i == 18 + 18 :
         return
 
-    
-
-    bottom_crose() 
-    
-    
-    lay_3()
-    # moves = moves + "\n******************************\n"
+    # print("@@@")
+    if len(mix)  < 6 :
+        i = 0
+    elif len(mix)  > 5  and  len(mix)  < 30 :
+        i = 1
+    else :
+        i = 3
+    while i < 0:
+        for mv in mix :
+            if mv == "R" :
+                shift_right()
+            elif mv == "L" :
+                shift_left()
+            elif mv == "U" :
+                shift_top()
+            elif mv == "D'" : 
+                reverse_bottom()
+            elif mv == "F" :
+                shift_front()
+            elif mv == "B" :
+                shift_back()
+            elif mv == "R'" :
+                reverse_right()
+            elif mv == "L'" :
+                reverse_left()
+            elif mv == "U'" :
+                reverse_top()
+            elif mv == "D" :
+                shift_bottom()
+            elif mv == "F'" :
+                reverse_front()
+            elif mv == "B'" :
+                reverse_back()
+            elif mv == "R2" :
+                shift_right()
+                shift_right()
+            elif mv == "L2" :
+                shift_left()
+                shift_left()
+            elif mv == "U2" :
+                shift_top()
+                shift_top()
+            elif mv == "D'2" :
+                reverse_bottom()
+                reverse_bottom()
+            elif mv == "F2" :
+                shift_front()
+                shift_front()
+            elif mv == "B2" :
+                shift_back()
+                shift_back()
+            elif mv == "R'2" :
+                reverse_right()
+                reverse_right()
+            elif mv == "L'2" :
+                reverse_left()
+                reverse_left()
+            elif mv == "U'2" :
+                reverse_top()
+                reverse_top()
+            elif mv == "D2" :
+                shift_bottom()
+                shift_bottom()
+            elif mv == "F'2" :
+                reverse_front()
+                reverse_front()
+            elif mv == "B'2" :
+                reverse_back()
+                reverse_back()
+        i += 1
+    # shift_front()
+    # shift_top()
+    # shift_top()
+    # reverse_front()
+    bottom_crose()
+    lay_3() 
     lay_2()
-    # moves = moves + "\n******************************\n"
     top_x()
-    
     do_fish()
-    
     do_second_last()
-    
-    do_last() 
+    do_last()
+    # print("@@@")
     
     res = moves
     res = res.split(" ")
-
     b = len(res)
-    print(b)
     c = 0
     zlt = ""
     while c < b - 1 :
@@ -1926,9 +2013,6 @@ def main(mix):
              zlt = zlt +" "+ res[c]
              c += 1
 
-
-
-    
     print(zlt)
     root = Tk()
     root.geometry("600x600")
